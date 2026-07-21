@@ -10,7 +10,7 @@ function MyOrders() {
     fetch("http://localhost:5000/orders")
       .then((res) => res.json())
       .then((data) => {
-        console.log("orders data:", data); // check this in console
+        console.log("orders data:", data); 
         setOrders(data);
       })
       .catch((err) => console.log(err));
@@ -36,7 +36,7 @@ function MyOrders() {
 
   const getOrderTotal = (order) =>
     order.items && order.items.length > 0
-      ? order.items.reduce((sum, item) => sum + getItemPrice(item), 0)
+      ? order.items.reduce((sum, item) => sum + getItemPrice(item) * (item.quantity || 1),0)
       : 0;
 
   return (
@@ -56,9 +56,11 @@ function MyOrders() {
             {order.items && order.items.length > 0 ? (
               order.items.map((item, idx) => (
                 <div key={item._id || idx}>
-                  <p>
-                    {getItemName(item)} - ₹{getItemPrice(item)}
-                  </p>
+                  <div className="border rounded p-2 mb-2">
+                     <h6>{getItemName(item)}</h6>
+                     <p>Price :₹{getItemPrice(item)}</p>
+                     <p>Quantity : {item.quantity || 1}</p>
+                  </div>
                 </div>
               ))
             ) : (

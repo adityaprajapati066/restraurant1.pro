@@ -2,37 +2,66 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <nav className="navbar navbar-expand-lg bg-body-tertiary">
+    <nav className="navbar navbar-expand-lg bg-white shadow sticky-top">
       <div className="container-fluid">
-
-        <a className="navbar-brand bg-amber-300 py-2 px-2 rounded-full" href="/register">Register</a>
+        <Link
+          className="btn btn-danger rounded-pill px-4 fw-bold"
+          to="/register"
+        >
+          Register
+        </Link>
 
         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-
           <li className="nav-item">
-            <Link className="nav-link active" to="/">Home</Link>
-            
+            <Link className="nav-link fw-semibold" to="/">
+              Home
+            </Link>
           </li>
 
           <li className="nav-item">
-            <Link className="nav-link" to="/about">
+            <Link className="nav-link fw-semibold" to="/about">
               About
             </Link>
           </li>
 
           <li className="nav-item">
-            <Link className="nav-link" to="/menu">
+            <Link className="nav-link fw-semibold" to="/menu">
               Menu
             </Link>
           </li>
 
-          <li className="nav-item bg-gray-200 ml-210 rounded-full">
-            <Link className="nav-link" to="/contact">
-            Contact
+          <li className="nav-item bg-gray-200 ml-170 rounded-full">
+            <Link className="nav-link fw-semibold" to="/contact">
+              Contact
             </Link>
           </li>
-        </ul>
 
+          {/* <li className="nav-item bg-gray-200 ml-5 rounded-full text-sm" >
+            <Link className="nav-link fw-semibold" to="/admin-contact">Contact Admin</Link>
+          </li> */}
+          <li className="nav-item dropdown bg-gray-200 ml-5 rounded-full text-sm">
+            <button
+              className="nav-link fw-semibold dropdown-toggle border-0 bg-transparent"
+              data-bs-toggle="dropdown"
+            >
+              Contact Admin
+            </button>
+
+            <ul className="dropdown-menu">
+              <li>
+                <Link className="dropdown-item" to="/admin-contact">
+                  Contact Admin
+                </Link>
+              </li>
+
+              <li>
+                <Link className="dropdown-item" to="/admin-message">
+                  Messages
+                </Link>
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
     </nav>
   );

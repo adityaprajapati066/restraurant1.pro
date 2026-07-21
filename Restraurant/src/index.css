@@ -1,1 +1,18 @@
 @import "tailwindcss";
+
+.card {
+  transition: 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+}
+
+.btn {
+  transition: 0.3s;
+}
+
+.form-control::placeholder {
+  color: slategrey!important;
+  font-size: 14px !important;
+}

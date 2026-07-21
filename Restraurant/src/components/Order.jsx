@@ -6,9 +6,10 @@ function Order() {
   const navigate = useNavigate();
 
   const cart = location.state || [];
+  console.log(location.state);
   console.log(cart);
 
-  const totalPrice = cart.reduce((sum, item) => sum + item.price, 0);
+  const totalPrice = cart.reduce((sum, item) => sum + item.price * item.quantity,0);
 
   if (cart.length === 0) {
     return (
@@ -42,7 +43,7 @@ function Order() {
 
     alert("Order Successful");
 
-    navigate("/orders");
+    navigate("/myorders");
   };
 
   return (
@@ -51,7 +52,7 @@ function Order() {
 
       {cart.map((item) => (
         <div
-          key={item.id}
+          key={item._id}
           className="card p-3 mx-auto mt-3"
           style={{ width: "300px" }}
         >
@@ -59,13 +60,14 @@ function Order() {
 
           <h4>{item.name}</h4>
 
-          <p>₹{item.price}</p>
+          <p>Quantity : {item.quantity}</p>
+          <p>Total : {item.price * item.quantity}</p>
         </div>
       ))}
 
       <h3>Total: ₹{totalPrice}</h3>
 
-      <button className="btn btn-success" onClick={confirmOrder}>
+      <button className="btn btn-success shadow-xl/50" onClick={confirmOrder}>
         Confirm Order
       </button>
 

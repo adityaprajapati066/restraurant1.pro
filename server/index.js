@@ -2,6 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
+const Razorpay = require("razorpay");
+const crypto = require("crypto");
 
 const Menu = require("./models/Menu");
 const Order = require("./models/Order");
@@ -147,6 +149,41 @@ app.delete("/menu/:id", async (req,res) =>{
     res.json({message:"Deleted"});
 });
 
+const razorpay = new Razorpay({
+  key_id: process.env.RAZORPAY_KEY_ID,
+  key_secret: process.env.RAZORPAY_KEY_SECRET,
+});
+
+app.post("/create-order", async(req,res) => {
+  try{
+
+    console.log(req.body);
+
+    const options = {
+      amount: req.body.amount * 100,
+      currency: "INR",
+      receipt: "restaurant_order",
+    };
+
+    const order = await razorpay.orders.create(options);
+
+    console.log(order);
+
+    res.json(order);
+
+  }catch(error){
+
+    console.log("Razorpay Error:", error);
+
+    res.status(500).json({
+       message: error.message
+    });
+  }
+});
+
 app.listen(5000, () => {
   console.log("server Run");
 });
+
+
+
