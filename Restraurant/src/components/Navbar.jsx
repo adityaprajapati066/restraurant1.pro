@@ -8,7 +8,7 @@ const Navbar = () => {
           className="btn btn-danger rounded-pill px-4 fw-bold"
           to="/register"
         >
-          Regi
+          Register
         </Link>
 
         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
