@@ -16,7 +16,7 @@ const AboutDetails = () => {
         ensure the best dining experience.
       </p>
 
-      <h3>Why Choose Us?</h3>
+      <h3>Any Choose Us?</h3>
 
       <ul>
         <li>🍕 Fresh Ingredients</li>
