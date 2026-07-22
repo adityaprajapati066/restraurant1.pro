@@ -115,7 +115,7 @@ async function handleSubmit(e) {
             ></textarea>
 
             <button className="btn btn-success w-100">
-              Send Message
+              Send Your Message
             </button>
 
           </form>
