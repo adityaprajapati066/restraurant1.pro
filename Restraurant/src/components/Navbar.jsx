@@ -44,7 +44,7 @@ const Navbar = () => {
               className="nav-link fw-semibold dropdown-toggle border-0 bg-transparent"
               data-bs-toggle="dropdown"
             >
-              Contactss Admin
+              Contact Admin
             </button>
 
             <ul className="dropdown-menu">
